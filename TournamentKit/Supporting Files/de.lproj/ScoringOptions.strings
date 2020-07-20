@@ -1,0 +1,17 @@
+/*
+  ScoringOptions.strings
+  TournamentKit
+
+  Created by Jan Wittler on 12.04.20.
+  Copyright © 2020 Jan Wittler. All rights reserved.
+*/
+
+"HighestScore" = "Es gewinnt der Spieler mit der höchsten Punktzahl.";
+"LowestScore" = "Es gewinnt der Spieler mit der niedrigsten Punktzahl.";
+"FixedScore" = "Es gewinnt der Spieler, welcher zuerst %d Punkte erreicht.";
+"FlexibleScoreWithDifference" = "Es gewinnt der Spieler, welcher zuerst mindestens %d Punkte erreicht und dabei mit mindestens %d Punkten Vorsprung führt. Beim Stande von %d:%d wird das Spiel solange fortgesetzt, bis ein Spieler %d Punkte Vorsprung erreicht hat.";
+"Overtime.bySuffix" = "Das Ergebnis wird als Verlängerung gewertet, wenn %@ ausgewählt ist.";
+"Overtime.bySuffix.Or" = "oder";
+"Scores.Title" = "Verteilung:";
+"Scores.Overtime.Title" = "Verteilung im Falle einer Verlängerung:";
+"Reward" = "%@ - %@";

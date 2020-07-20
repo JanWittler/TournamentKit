@@ -1,0 +1,17 @@
+/* 
+  ScoringOptions.strings
+  TournamentKit
+
+  Created by Jan Wittler on 12.04.20.
+  Copyright © 2020 Jan Wittler. All rights reserved.
+*/
+
+"HighestScore" = "The player with the highest score wins.";
+"LowestScore" = "The player with the lowest score wins.";
+"FixedScore" = "The player who reaches first %d points wins.";
+"FlexibleScoreWithDifference" = "The player who reaches first at least %d points and leads by at least %d points wins. If the score is %d:%d the game is continued until one player leads by %d points.";
+"Overtime.bySuffix" = "The result is rated as overtime if %@ is selected.";
+"Overtime.bySuffix.Or" = "or";
+"Scores.Title" = "Distribution:";
+"Scores.Overtime.Title" = "Distribution in case of overtime:";
+"Reward" = "%@ - %@";

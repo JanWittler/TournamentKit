@@ -3,17 +3,45 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A763B7224C5A7D80007DA57 /* MatchTypeScoringOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A763B7124C5A7D80007DA57 /* MatchTypeScoringOptions.swift */; };
+		2A763B7824C5A8B50007DA57 /* ScoringOptions.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A763B7A24C5A8B50007DA57 /* ScoringOptions.strings */; };
+		2A763B7B24C5A8B70007DA57 /* ScoringOptions.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 2A763B7D24C5A8B70007DA57 /* ScoringOptions.stringsdict */; };
+		2A763B8224C5AC2C0007DA57 /* TournamentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A763B8124C5AC2C0007DA57 /* TournamentManager.swift */; };
 		2A792EDE24C1B7D40050D0CA /* TournamentKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A792EDC24C1B7D40050D0CA /* TournamentKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2A792EE524C1B8030050D0CA /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A792EE424C1B8030050D0CA /* Match.swift */; };
+		2A792EE724C1B8120050D0CA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A792EE624C1B8120050D0CA /* Player.swift */; };
+		2A792EE924C1B8170050D0CA /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A792EE824C1B8170050D0CA /* Team.swift */; };
+		2A792EEB24C1B8530050D0CA /* MatchParticipation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A792EEA24C1B8530050D0CA /* MatchParticipation.swift */; };
+		2A792EED24C1B9770050D0CA /* MatchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A792EEC24C1B9770050D0CA /* MatchType.swift */; };
+		2A792EEF24C1B9A00050D0CA /* MatchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A792EEE24C1B9A00050D0CA /* MatchResult.swift */; };
+		2A792EF124C1BB6D0050D0CA /* MatchDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A792EF024C1BB6D0050D0CA /* MatchDay.swift */; };
+		2A792EF324C1BBE70050D0CA /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A792EF224C1BBE70050D0CA /* Tournament.swift */; };
+		2A792EF524C1CB1C0050D0CA /* RoundRobinTournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A792EF424C1CB1C0050D0CA /* RoundRobinTournament.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A763B7124C5A7D80007DA57 /* MatchTypeScoringOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTypeScoringOptions.swift; sourceTree = "<group>"; };
+		2A763B7924C5A8B50007DA57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ScoringOptions.strings; sourceTree = "<group>"; };
+		2A763B7C24C5A8B70007DA57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/ScoringOptions.stringsdict; sourceTree = "<group>"; };
+		2A763B7E24C5A8C40007DA57 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ScoringOptions.strings; sourceTree = "<group>"; };
+		2A763B7F24C5A8C40007DA57 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = de.lproj/ScoringOptions.stringsdict; sourceTree = "<group>"; };
+		2A763B8124C5AC2C0007DA57 /* TournamentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentManager.swift; sourceTree = "<group>"; };
 		2A792ED924C1B7D40050D0CA /* TournamentKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TournamentKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A792EDC24C1B7D40050D0CA /* TournamentKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TournamentKit.h; sourceTree = "<group>"; };
 		2A792EDD24C1B7D40050D0CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A792EE424C1B8030050D0CA /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		2A792EE624C1B8120050D0CA /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		2A792EE824C1B8170050D0CA /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		2A792EEA24C1B8530050D0CA /* MatchParticipation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchParticipation.swift; sourceTree = "<group>"; };
+		2A792EEC24C1B9770050D0CA /* MatchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchType.swift; sourceTree = "<group>"; };
+		2A792EEE24C1B9A00050D0CA /* MatchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResult.swift; sourceTree = "<group>"; };
+		2A792EF024C1BB6D0050D0CA /* MatchDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDay.swift; sourceTree = "<group>"; };
+		2A792EF224C1BBE70050D0CA /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
+		2A792EF424C1CB1C0050D0CA /* RoundRobinTournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRobinTournament.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +55,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A763B7324C5A8A30007DA57 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A763B7A24C5A8B50007DA57 /* ScoringOptions.strings */,
+				2A763B7D24C5A8B70007DA57 /* ScoringOptions.stringsdict */,
+				2A792EDD24C1B7D40050D0CA /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2A763B8024C5AC210007DA57 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				2A763B8124C5AC2C0007DA57 /* TournamentManager.swift */,
+				2A763B7124C5A7D80007DA57 /* MatchTypeScoringOptions.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
 		2A792ECF24C1B7D40050D0CA = {
 			isa = PBXGroup;
 			children = (
@@ -47,7 +94,17 @@
 			isa = PBXGroup;
 			children = (
 				2A792EDC24C1B7D40050D0CA /* TournamentKit.h */,
-				2A792EDD24C1B7D40050D0CA /* Info.plist */,
+				2A792EF224C1BBE70050D0CA /* Tournament.swift */,
+				2A792EF424C1CB1C0050D0CA /* RoundRobinTournament.swift */,
+				2A792EF024C1BB6D0050D0CA /* MatchDay.swift */,
+				2A792EE424C1B8030050D0CA /* Match.swift */,
+				2A792EEC24C1B9770050D0CA /* MatchType.swift */,
+				2A792EEE24C1B9A00050D0CA /* MatchResult.swift */,
+				2A792EEA24C1B8530050D0CA /* MatchParticipation.swift */,
+				2A792EE624C1B8120050D0CA /* Player.swift */,
+				2A792EE824C1B8170050D0CA /* Team.swift */,
+				2A763B8024C5AC210007DA57 /* Logic */,
+				2A763B7324C5A8A30007DA57 /* Supporting Files */,
 			);
 			path = TournamentKit;
 			sourceTree = "<group>";
@@ -95,16 +152,18 @@
 				TargetAttributes = {
 					2A792ED824C1B7D40050D0CA = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 				};
 			};
 			buildConfigurationList = 2A792ED324C1B7D40050D0CA /* Build configuration list for PBXProject "TournamentKit" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 2A792ECF24C1B7D40050D0CA;
 			productRefGroup = 2A792EDA24C1B7D40050D0CA /* Products */;
@@ -121,6 +180,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A763B7824C5A8B50007DA57 /* ScoringOptions.strings in Resources */,
+				2A763B7B24C5A8B70007DA57 /* ScoringOptions.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,16 +192,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A763B7224C5A7D80007DA57 /* MatchTypeScoringOptions.swift in Sources */,
+				2A792EF524C1CB1C0050D0CA /* RoundRobinTournament.swift in Sources */,
+				2A792EF324C1BBE70050D0CA /* Tournament.swift in Sources */,
+				2A792EE924C1B8170050D0CA /* Team.swift in Sources */,
+				2A792EE724C1B8120050D0CA /* Player.swift in Sources */,
+				2A792EE524C1B8030050D0CA /* Match.swift in Sources */,
+				2A792EED24C1B9770050D0CA /* MatchType.swift in Sources */,
+				2A792EEF24C1B9A00050D0CA /* MatchResult.swift in Sources */,
+				2A792EEB24C1B8530050D0CA /* MatchParticipation.swift in Sources */,
+				2A763B8224C5AC2C0007DA57 /* TournamentManager.swift in Sources */,
+				2A792EF124C1BB6D0050D0CA /* MatchDay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2A763B7A24C5A8B50007DA57 /* ScoringOptions.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A763B7924C5A8B50007DA57 /* en */,
+				2A763B7E24C5A8C40007DA57 /* de */,
+			);
+			name = ScoringOptions.strings;
+			sourceTree = "<group>";
+		};
+		2A763B7D24C5A8B70007DA57 /* ScoringOptions.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A763B7C24C5A8B70007DA57 /* en */,
+				2A763B7F24C5A8C40007DA57 /* de */,
+			);
+			name = ScoringOptions.stringsdict;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2A792EDF24C1B7D40050D0CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -188,7 +282,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -204,6 +298,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -245,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -260,13 +355,14 @@
 		2A792EE224C1B7D40050D0CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BYS7D5JGQJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TournamentKit/Info.plist;
+				INFOPLIST_FILE = "TournamentKit/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -276,6 +372,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.wittlerDev.TournamentKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -284,13 +381,14 @@
 		2A792EE324C1B7D40050D0CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BYS7D5JGQJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TournamentKit/Info.plist;
+				INFOPLIST_FILE = "TournamentKit/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

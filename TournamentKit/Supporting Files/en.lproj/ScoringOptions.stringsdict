@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Overtime.byAllReachingScore</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>The result is rated as overtime if all players reached at least %#@POINTS@.</string>
+		<key>POINTS</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>one point</string>
+			<key>other</key>
+			<string>%d points</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
