@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A15B5CD24C64014007980A8 /* TournamentKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B5CC24C64014007980A8 /* TournamentKitTests.swift */; };
+		2A15B5CF24C64014007980A8 /* TournamentKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A792ED924C1B7D40050D0CA /* TournamentKit.framework */; };
+		2A15B5D624C6401F007980A8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B5D524C6401F007980A8 /* Player.swift */; };
+		2A15B5D824C640C8007980A8 /* MatchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B5D724C640C8007980A8 /* MatchResult.swift */; };
+		2A15B5DA24C6418B007980A8 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B5D924C6418B007980A8 /* Match.swift */; };
+		2A15B5DD24C641C9007980A8 /* MatchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B5DC24C641C9007980A8 /* MatchType.swift */; };
+		2A15B5DF24C6434B007980A8 /* MatchDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B5DE24C6434B007980A8 /* MatchDay.swift */; };
+		2A15B5E124C64376007980A8 /* RoundRobinTournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B5E024C64376007980A8 /* RoundRobinTournament.swift */; };
 		2A763B7224C5A7D80007DA57 /* MatchTypeScoringOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A763B7124C5A7D80007DA57 /* MatchTypeScoringOptions.swift */; };
 		2A763B7824C5A8B50007DA57 /* ScoringOptions.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A763B7A24C5A8B50007DA57 /* ScoringOptions.strings */; };
 		2A763B7B24C5A8B70007DA57 /* ScoringOptions.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 2A763B7D24C5A8B70007DA57 /* ScoringOptions.stringsdict */; };
@@ -21,9 +29,30 @@
 		2A792EF124C1BB6D0050D0CA /* MatchDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A792EF024C1BB6D0050D0CA /* MatchDay.swift */; };
 		2A792EF324C1BBE70050D0CA /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A792EF224C1BBE70050D0CA /* Tournament.swift */; };
 		2A792EF524C1CB1C0050D0CA /* RoundRobinTournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A792EF424C1CB1C0050D0CA /* RoundRobinTournament.swift */; };
+		2AD2C76D24C70A2C00126BF5 /* TournamentKitWrongResultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD2C76C24C70A2B00126BF5 /* TournamentKitWrongResultsTests.swift */; };
+		2AD2C76F24C70A5900126BF5 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD2C76E24C70A5900126BF5 /* TestHelper.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2A15B5D024C64014007980A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A792ED024C1B7D40050D0CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A792ED824C1B7D40050D0CA;
+			remoteInfo = TournamentKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2A15B5CA24C64014007980A8 /* TournamentKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TournamentKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A15B5CC24C64014007980A8 /* TournamentKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentKitTests.swift; sourceTree = "<group>"; };
+		2A15B5CE24C64014007980A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A15B5D524C6401F007980A8 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		2A15B5D724C640C8007980A8 /* MatchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResult.swift; sourceTree = "<group>"; };
+		2A15B5D924C6418B007980A8 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		2A15B5DC24C641C9007980A8 /* MatchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchType.swift; sourceTree = "<group>"; };
+		2A15B5DE24C6434B007980A8 /* MatchDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDay.swift; sourceTree = "<group>"; };
+		2A15B5E024C64376007980A8 /* RoundRobinTournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRobinTournament.swift; sourceTree = "<group>"; };
 		2A763B7124C5A7D80007DA57 /* MatchTypeScoringOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTypeScoringOptions.swift; sourceTree = "<group>"; };
 		2A763B7924C5A8B50007DA57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ScoringOptions.strings; sourceTree = "<group>"; };
 		2A763B7C24C5A8B70007DA57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/ScoringOptions.stringsdict; sourceTree = "<group>"; };
@@ -42,9 +71,19 @@
 		2A792EF024C1BB6D0050D0CA /* MatchDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDay.swift; sourceTree = "<group>"; };
 		2A792EF224C1BBE70050D0CA /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		2A792EF424C1CB1C0050D0CA /* RoundRobinTournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRobinTournament.swift; sourceTree = "<group>"; };
+		2AD2C76C24C70A2B00126BF5 /* TournamentKitWrongResultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentKitWrongResultsTests.swift; sourceTree = "<group>"; };
+		2AD2C76E24C70A5900126BF5 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2A15B5C724C64014007980A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A15B5CF24C64014007980A8 /* TournamentKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A792ED624C1B7D40050D0CA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -55,6 +94,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A15B5CB24C64014007980A8 /* TournamentKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				2A15B5CC24C64014007980A8 /* TournamentKitTests.swift */,
+				2AD2C76C24C70A2B00126BF5 /* TournamentKitWrongResultsTests.swift */,
+				2AD2C76E24C70A5900126BF5 /* TestHelper.swift */,
+				2A15B5DB24C641A4007980A8 /* Structs */,
+				2A15B5CE24C64014007980A8 /* Info.plist */,
+			);
+			path = TournamentKitTests;
+			sourceTree = "<group>";
+		};
+		2A15B5DB24C641A4007980A8 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				2A15B5E024C64376007980A8 /* RoundRobinTournament.swift */,
+				2A15B5DE24C6434B007980A8 /* MatchDay.swift */,
+				2A15B5D924C6418B007980A8 /* Match.swift */,
+				2A15B5D724C640C8007980A8 /* MatchResult.swift */,
+				2A15B5DC24C641C9007980A8 /* MatchType.swift */,
+				2A15B5D524C6401F007980A8 /* Player.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
 		2A763B7324C5A8A30007DA57 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				2A792EDB24C1B7D40050D0CA /* TournamentKit */,
+				2A15B5CB24C64014007980A8 /* TournamentKitTests */,
 				2A792EDA24C1B7D40050D0CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				2A792ED924C1B7D40050D0CA /* TournamentKit.framework */,
+				2A15B5CA24C64014007980A8 /* TournamentKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +189,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		2A15B5C924C64014007980A8 /* TournamentKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A15B5D424C64014007980A8 /* Build configuration list for PBXNativeTarget "TournamentKitTests" */;
+			buildPhases = (
+				2A15B5C624C64014007980A8 /* Sources */,
+				2A15B5C724C64014007980A8 /* Frameworks */,
+				2A15B5C824C64014007980A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A15B5D124C64014007980A8 /* PBXTargetDependency */,
+			);
+			name = TournamentKitTests;
+			productName = TournamentKitTests;
+			productReference = 2A15B5CA24C64014007980A8 /* TournamentKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2A792ED824C1B7D40050D0CA /* TournamentKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A792EE124C1B7D40050D0CA /* Build configuration list for PBXNativeTarget "TournamentKit" */;
@@ -147,9 +231,13 @@
 		2A792ED024C1B7D40050D0CA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Jan Wittler";
 				TargetAttributes = {
+					2A15B5C924C64014007980A8 = {
+						CreatedOnToolsVersion = 11.6;
+					};
 					2A792ED824C1B7D40050D0CA = {
 						CreatedOnToolsVersion = 11.6;
 						LastSwiftMigration = 1160;
@@ -171,11 +259,19 @@
 			projectRoot = "";
 			targets = (
 				2A792ED824C1B7D40050D0CA /* TournamentKit */,
+				2A15B5C924C64014007980A8 /* TournamentKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2A15B5C824C64014007980A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A792ED724C1B7D40050D0CA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,6 +284,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2A15B5C624C64014007980A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A15B5DF24C6434B007980A8 /* MatchDay.swift in Sources */,
+				2A15B5E124C64376007980A8 /* RoundRobinTournament.swift in Sources */,
+				2A15B5D624C6401F007980A8 /* Player.swift in Sources */,
+				2A15B5D824C640C8007980A8 /* MatchResult.swift in Sources */,
+				2A15B5CD24C64014007980A8 /* TournamentKitTests.swift in Sources */,
+				2A15B5DD24C641C9007980A8 /* MatchType.swift in Sources */,
+				2AD2C76F24C70A5900126BF5 /* TestHelper.swift in Sources */,
+				2AD2C76D24C70A2C00126BF5 /* TournamentKitWrongResultsTests.swift in Sources */,
+				2A15B5DA24C6418B007980A8 /* Match.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A792ED524C1B7D40050D0CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -207,6 +319,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2A15B5D124C64014007980A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A792ED824C1B7D40050D0CA /* TournamentKit */;
+			targetProxy = 2A15B5D024C64014007980A8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2A763B7A24C5A8B50007DA57 /* ScoringOptions.strings */ = {
@@ -230,6 +350,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2A15B5D224C64014007980A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BYS7D5JGQJ;
+				INFOPLIST_FILE = TournamentKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wittlerDev.TournamentKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A15B5D324C64014007980A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BYS7D5JGQJ;
+				INFOPLIST_FILE = TournamentKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wittlerDev.TournamentKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		2A792EDF24C1B7D40050D0CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -406,6 +564,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2A15B5D424C64014007980A8 /* Build configuration list for PBXNativeTarget "TournamentKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A15B5D224C64014007980A8 /* Debug */,
+				2A15B5D324C64014007980A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2A792ED324C1B7D40050D0CA /* Build configuration list for PBXProject "TournamentKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

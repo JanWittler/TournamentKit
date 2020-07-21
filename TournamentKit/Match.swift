@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum MatchOvertimeResult {
+public enum MatchOvertimeResult: Equatable, Hashable {
     case noOvertime
     case overtime(suffix: String?)
 }

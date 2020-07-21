@@ -9,9 +9,9 @@
 import Foundation
 
 public struct RoundRobinTournamentRanking<MatchResult: TournamentKit.MatchResult>: Comparable {
-    let participation: MatchResult.MatchParticipation
-    let rank: Int
-    let reward: MatchResult.Reward
+    public let participation: MatchResult.MatchParticipation
+    public let rank: Int
+    public let reward: MatchResult.Reward
     
     public static func <(lhs: RoundRobinTournamentRanking, rhs: RoundRobinTournamentRanking) -> Bool {
         return lhs.rank < rhs.rank
@@ -22,8 +22,8 @@ public protocol RoundRobinTournament: Tournament {
     func accumulatedReward(for participation: MatchResult.MatchParticipation) -> MatchDay.Match.Result.Reward
     func ranking() -> [RoundRobinTournamentRanking<MatchResult>]
     
-    func addDecider(with participantions: [MatchResult.MatchParticipation])
-    func removeDecider(_ decider: MatchDay.Match)
+    mutating func addDecider(with participantions: [MatchResult.MatchParticipation])
+    mutating func removeDecider(_ decider: MatchDay.Match)
 }
 
 public extension RoundRobinTournament {
@@ -46,16 +46,22 @@ public extension RoundRobinTournament {
     func ranks(for participationsAndRewards: [(participation: MatchResult.MatchParticipation, reward: MatchResult.Reward)], rankOffset: Int = 0) -> [RoundRobinTournamentRanking<MatchResult>] {
         let sortedRanking = participationsAndRewards.enumerated().sorted { (lhs, rhs) in
             if lhs.element.reward != rhs.element.reward {
-                return lhs.element.reward < rhs.element.reward
+                return lhs.element.reward > rhs.element.reward
             }
             return lhs.offset < rhs.offset
-        }
-        return sortedRanking.map { (index, element) in
+        }.map { $0.element }
+        return sortedRanking.enumerated().map { (index, element) in
             var rank = index
-            while rank > 0 && sortedRanking[rank - 1].element.reward == element.reward {
+            while rank > 0 && sortedRanking[rank - 1].reward == element.reward {
                 rank -= 1
             }
             return RoundRobinTournamentRanking(participation: element.participation, rank: rank + rankOffset, reward: element.reward)
         }
+    }
+}
+
+public extension RoundRobinTournament where MatchResult.Reward: AdditiveArithmetic {
+    func accumulatedReward(for participation: MatchResult.MatchParticipation) -> MatchDay.Match.Result.Reward {
+        return matches().map { $0.results }.joined().filter { $0.participation == participation }.compactMap { $0.reward }.reduce(.zero, +)
     }
 }

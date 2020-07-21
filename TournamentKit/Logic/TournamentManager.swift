@@ -8,19 +8,15 @@
 
 import Foundation
 
-public struct TournamentManager<Tournament: TournamentKit.Tournament> {
+public struct TournamentManager {
     public enum ResultError: Error {
         case invalidResultsProvided
         case invalidScores
     }
     
-    let tournament: Tournament
+    public init() { }
     
-    public init(tournament: Tournament) {
-        self.tournament = tournament
-    }
-    
-    public func applyScores(_ scores: [(result: Tournament.MatchResult, score: Int)], for match: inout Tournament.MatchDay.Match, overtimeSuffix: String?) throws {
+    public func applyScores<Match: TournamentKit.Match>(_ scores: [(result: Match.Result, score: Int)], for match: inout Match, overtimeSuffix: String?) throws {
         guard scores.count == match.results.count else {
             throw ResultError.invalidResultsProvided
         }
@@ -33,7 +29,7 @@ public struct TournamentManager<Tournament: TournamentKit.Tournament> {
         guard let (sortedRewards, isOvertime) = match.matchType.scoringOptions.sortedRewardsForResultIfValid(result, overtimeSuffix: overtimeSuffix) else {
             throw ResultError.invalidScores
         }
-        sortedRewards.enumerated().map { (index, obj) -> (index: Int, score: Int, reward: Tournament.MatchResult.Reward, rank: Int) in
+        sortedRewards.enumerated().map { (index, obj) -> (index: Int, score: Int, reward: Match.Result.Reward, rank: Int) in
             var rank = index
             while rank > 0 && sortedRewards[rank - 1].score == obj.score {
                 rank -= 1
@@ -46,10 +42,8 @@ public struct TournamentManager<Tournament: TournamentKit.Tournament> {
         }
         match.overtimeResult = isOvertime ? .overtime(suffix: overtimeSuffix) : .noOvertime
     }
-}
-
-extension TournamentManager where Tournament: RoundRobinTournament {
-    public func adjustDeciderExistence() {
+    
+    public func adjustDeciderExistence<Tournament: TournamentKit.RoundRobinTournament>(in tournament: inout Tournament) {
         let ranking = tournament.ranking()
         guard let bestRank = ranking.map({ $0.rank }).min() else {
             return

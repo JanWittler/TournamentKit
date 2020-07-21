@@ -15,7 +15,7 @@ fileprivate extension Array {
 }
 
 public protocol MatchTypeReward: Comparable {
-    static var zeroValue: Self { get }
+    static var zero: Self { get }
 }
 
 public protocol LocalizedDescriptionMatchTypeReward: MatchTypeReward {
@@ -28,7 +28,7 @@ public struct MatchTypeScoringOptions<Reward: MatchTypeReward> {
     public let overtimeConfiguration: OvertimeCofiguration?
     
     public func rewards(for rank: Int) -> Reward {
-        return rankedRewards[optional: rank] ?? .zeroValue
+        return rankedRewards[optional: rank] ?? .zero
     }
     
     public enum WinningMethod {
@@ -52,7 +52,7 @@ public struct MatchTypeScoringOptions<Reward: MatchTypeReward> {
         public let trigger: OvertimeTrigger
         
         public func rewards(for rank: Int) -> Reward {
-            return rankedRewards[optional: rank] ?? .zeroValue
+            return rankedRewards[optional: rank] ?? .zero
         }
         public enum OvertimeTrigger {
             case bySuffix(possibleSuffixes: [String])
@@ -105,7 +105,7 @@ public struct MatchTypeScoringOptions<Reward: MatchTypeReward> {
                 return nil
             }
         }
-        return (sortedResult.enumerated().map { ($0.element.object, $0.element.score, rankedRewards[optional: $0.offset] ?? .zeroValue) }, isOvertime)
+        return (sortedResult.enumerated().map { ($0.element.object, $0.element.score, rankedRewards[optional: $0.offset] ?? .zero) }, isOvertime)
     }
     
     private func sortedResult<T>(from result: [T: Int]) -> [(object: T, score: Int)] {
@@ -115,7 +115,7 @@ public struct MatchTypeScoringOptions<Reward: MatchTypeReward> {
     
     private func validateScoresDifferent(_ sortedScores: [Int], rankedRewards: [Reward]) -> Bool {
         var index = 1
-        let rewardAt: (Int) -> Reward = { return rankedRewards[optional: $0] ?? .zeroValue }
+        let rewardAt: (Int) -> Reward = { return rankedRewards[optional: $0] ?? .zero }
         repeat {
             defer { index += 1 }
             guard index < sortedScores.count else {

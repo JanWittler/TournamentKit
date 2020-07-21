@@ -8,13 +8,10 @@
 
 import Foundation
 
-public protocol Player: Hashable {
-    var firstName: String? { get }
-    var nickName: String? { get }
-    var lastName: String? { get }
+public protocol Player: MatchParticipation {
+    
 }
 
 public extension Player {
     var players: [Self] { return [self] }
-    var name: String { return [firstName, nickName, lastName].compactMap { $0 }.joined() }
 }
