@@ -20,7 +20,7 @@ class TournamentKitTests: XCTestCase {
         
         let match2_1 = Match(matchType: .overtimeScore, players: ["A", "C"])
         let matchDay2 = MatchDay(matches: [match2_1])
-        tournament = RoundRobinTournament(name: "Test 1", date: Date(), matchDays: [matchDay1, matchDay2])
+        tournament = RoundRobinTournament(matchDays: [matchDay1, matchDay2])
     }
 
     override func tearDownWithError() throws {

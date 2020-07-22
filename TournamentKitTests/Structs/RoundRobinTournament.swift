@@ -10,13 +10,11 @@ import Foundation
 import TournamentKit
 
 struct RoundRobinTournament: TournamentKit.RoundRobinTournament {
-    let name: String
-    let date: Date
     var matchDays: [MatchDay]
     
     mutating func addDecider(with participations: [Player]) {
         let match = Match(matchType: .decider, players: participations)
-        let matchDay = MatchDay(name: "Decider", matches: [match])
+        let matchDay = MatchDay(matches: [match])
         matchDays.append(matchDay)
     }
     

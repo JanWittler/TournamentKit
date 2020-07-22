@@ -9,8 +9,10 @@
 import Foundation
 import TournamentKit
 
-enum MatchType: TournamentKit.MatchType, Equatable {
-    static var decider: MatchType { return _decider }
+enum MatchType: TournamentKit.MatchType {
+    func isDecider() -> Bool {
+        return self == .decider
+    }
     
     case highestScore
     case lowestScore
@@ -18,7 +20,7 @@ enum MatchType: TournamentKit.MatchType, Equatable {
     case flexibleScore5Difference2
     case overtimeSuffix
     case overtimeScore
-    case _decider
+    case decider
     
     typealias Reward = MatchResult.Reward
     
@@ -30,7 +32,7 @@ enum MatchType: TournamentKit.MatchType, Equatable {
         case .flexibleScore5Difference2: return .init(winningMethod: .flexibleScoreWithDifference(minimalScore: 5, difference: 2), rankedRewards: [3])
         case .overtimeSuffix: return .init(winningMethod: .highestScore, rankedRewards: [3], overtimeConfiguration: .init(rankedRewards: [2,1], trigger: .bySuffix(possibleSuffixes: ["OT"])))
         case .overtimeScore: return .init(winningMethod: .fixedScore(score: 2), rankedRewards: [3], overtimeConfiguration: .init(rankedRewards: [2,1], trigger: .byAllReachingScore(score: 1)))
-        case ._decider: return .init(winningMethod: .highestScore, rankedRewards: [])
+        case .decider: return .init(winningMethod: .highestScore, rankedRewards: [])
         }
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol MatchParticipation: Hashable, Comparable {
+public protocol MatchParticipation: Comparable {
     associatedtype Player: TournamentKit.Player
     
     var players: [Player] { get }

@@ -11,7 +11,6 @@ import Foundation
 public protocol MatchDay {
     associatedtype Match: TournamentKit.Match
     
-    var name: String? { get }
     var matches: [Match] { get }
 }
 

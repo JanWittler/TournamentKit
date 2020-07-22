@@ -8,10 +8,10 @@
 
 import Foundation
 
-public protocol MatchType: Equatable {
+public protocol MatchType {
     associatedtype Reward: MatchTypeReward
-    /// The decider match type.
-    static var decider: Self { get }
     
     var scoringOptions: MatchTypeScoringOptions<Reward> { get }
+    
+    func isDecider() -> Bool
 }

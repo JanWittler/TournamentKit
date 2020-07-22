@@ -10,11 +10,5 @@ import Foundation
 import TournamentKit
 
 struct MatchDay: TournamentKit.MatchDay, Equatable {
-    let name: String?
     var matches: [Match]
-    
-    init(name: String? = nil, matches: [Match]) {
-        self.name = name
-        self.matches = matches
-    }
 }

@@ -49,7 +49,7 @@ public struct TournamentManager {
             return
         }
         let bestRankParticipations = ranking.filter { $0.rank == bestRank }.map { $0.participation }
-        let deciders = tournament.matches().filter { $0.matchType == .decider }
+        let deciders = tournament.matches().filter { $0.matchType.isDecider() }
         if bestRankParticipations.count > 1 {
             let splitDeciders = Dictionary(grouping: deciders) { decider in
                 decider.participations.count == bestRankParticipations.count && bestRankParticipations.allSatisfy { decider.participations.contains($0) }

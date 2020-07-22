@@ -12,17 +12,21 @@ public protocol Tournament {
     associatedtype MatchDay: TournamentKit.MatchDay
     typealias MatchResult = MatchDay.Match.Result
     
-    var name: String { get }
-    var date: Date { get }
     var matchDays: [MatchDay] { get }
     
-    func participations() -> Set<MatchResult.MatchParticipation>
+    func participations() -> [MatchResult.MatchParticipation]
 }
 
 public extension Tournament {
     var isFinished: Bool { return matchDays.allSatisfy { $0.isFinished } }
-    func participations() -> Set<MatchResult.MatchParticipation> {
-        return Set(matchDays.map { $0.matches }.joined().map { $0.results }.joined().map { $0.participation })
+    
+    func participations() -> [MatchResult.MatchParticipation] {
+        let allParticipations = matchDays.map { $0.matches }.joined().map { $0.results }.joined().map { $0.participation }
+        return allParticipations.reduce(into: []) { (result, participation) in
+            if !result.contains(participation) {
+                result.append(participation)
+            }
+        }
     }
     
     func matches() -> [MatchDay.Match] { return Array(matchDays.map { $0.matches }.joined()) }
