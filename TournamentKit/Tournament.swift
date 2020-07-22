@@ -8,16 +8,30 @@
 
 import Foundation
 
+/**
+ An abstract object to represent some tournament.
+ 
+ - note: Due to its abstract intention, there is no notion how the results of a match influence the outcome of the tournament.
+ */
 public protocol Tournament {
+    /// The associated `MatchDay` type.
     associatedtype MatchDay: TournamentKit.MatchDay
+    /// The associated `MatchResult` type.
     typealias MatchResult = MatchDay.Match.Result
     
+    /// The match days of which this tournament consists.
     var matchDays: [MatchDay] { get }
     
+    /**
+     The participations for this tournament.
+     
+     - important: The returned array must contain all and only those participations contained in the tournament's matches. There must be no duplicates.
+     */
     func participations() -> [MatchResult.MatchParticipation]
 }
 
 public extension Tournament {
+    /// Indicates whether the tournament is finished, i.e. all its matches are finished.
     var isFinished: Bool { return matchDays.allSatisfy { $0.isFinished } }
     
     func participations() -> [MatchResult.MatchParticipation] {
@@ -29,5 +43,6 @@ public extension Tournament {
         }
     }
     
+    /// A convenience accessor to all matches of this tournament. Matches are returned in the order they appear in their match days and in the order their match days appear in the tournament.
     func matches() -> [MatchDay.Match] { return Array(matchDays.map { $0.matches }.joined()) }
 }

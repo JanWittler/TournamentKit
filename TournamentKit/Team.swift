@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// An object that represents a team that participates in a match. A team consists of multiple players.
 public protocol Team: MatchParticipation {
     
 }

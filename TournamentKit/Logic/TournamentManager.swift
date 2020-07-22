@@ -8,14 +8,29 @@
 
 import Foundation
 
+/// An object to manage scores, results and state of a tournament.
 public struct TournamentManager {
+    /// Errors that may occur while applying a score.
     public enum ResultError: Error {
+        /// The provided results do not match with the results of the provided match.
         case invalidResultsProvided
+        /// The scores are invalid.
         case invalidScores
     }
     
     public init() { }
     
+    /**
+     Applies the given scores to the given match. If the scores are invalid - determined based on the type of the match - an error of type `ResultError` is thrown.
+     - parameters:
+       - scores: The scores for the match. The results in this array must match with the results of the given match, the order does not matter.
+       - match: The match to apply the given scores to.
+       - overtimeSuffix: A suffix indicating some overtime if any.
+     - throws: Throws an error of `ResultError` if the provided input is invalid.
+     - postcondition: All `match.results.score` match their value provided in the `scores` array.
+     - postcondition: All `match.results.rank` and  `match.results.reward` are updated and not `nil`.
+     - postcondition: `match.overtimeResult` is updated and not `nil`.
+     */
     public func applyScores<Match: TournamentKit.Match>(_ scores: [(result: Match.Result, score: Int)], for match: inout Match, overtimeSuffix: String?) throws {
         guard scores.count == match.results.count else {
             throw ResultError.invalidResultsProvided
@@ -26,7 +41,7 @@ public struct TournamentManager {
         guard result.count == match.results.count else {
             throw ResultError.invalidResultsProvided
         }
-        guard let (sortedRewards, isOvertime) = match.matchType.scoringOptions.sortedRewardsForResultIfValid(result, overtimeSuffix: overtimeSuffix) else {
+        guard let (sortedRewards, isOvertime) = match.matchType.scoringConfiguration.sortedRewardsForResultIfValid(result, overtimeSuffix: overtimeSuffix) else {
             throw ResultError.invalidScores
         }
         sortedRewards.enumerated().map { (index, obj) -> (index: Int, score: Int, reward: Match.Result.Reward, rank: Int) in
@@ -43,6 +58,16 @@ public struct TournamentManager {
         match.overtimeResult = isOvertime ? .overtime(suffix: overtimeSuffix) : .noOvertime
     }
     
+    /**
+     Adjusts the existence of a decider in the given tournament.
+     
+     If the state of the tournament does not require a decider, all deciders are removed using `removeDecider(_:)`.
+     
+     If the state of the tournament requires a decider, all deciders not matching the participations for the required decider are removed using `removeDecider(_:)`. If there is not yet a decider with the required participations, a decider is added using `addDecider(with:)`.
+     
+     - parameters:
+       - tournament: The tournament for which to adjust the decider existence.
+     */
     public func adjustDeciderExistence<Tournament: TournamentKit.RoundRobinTournament>(in tournament: inout Tournament) {
         let ranking = tournament.ranking()
         guard let bestRank = ranking.map({ $0.rank }).min() else {

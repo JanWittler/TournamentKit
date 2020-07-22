@@ -8,9 +8,13 @@
 
 import Foundation
 
+/// An object to represent a rank for some participation in a round robin tournament.
 public struct RoundRobinTournamentRanking<MatchResult: TournamentKit.MatchResult>: Comparable {
+    /// The participation of the ranking.
     public let participation: MatchResult.MatchParticipation
+    /// The rank of the ranking. Best rank is 0.
     public let rank: Int
+    /// The reward of the participation gained in the tourmament.
     public let reward: MatchResult.Reward
     
     public static func <(lhs: RoundRobinTournamentRanking, rhs: RoundRobinTournamentRanking) -> Bool {
@@ -18,11 +22,42 @@ public struct RoundRobinTournamentRanking<MatchResult: TournamentKit.MatchResult
     }
 }
 
+/// An object to represent a round robin tournament, i.e. a tableau based tournament whose winner is that participation with the highest accumulated reward.
 public protocol RoundRobinTournament: Tournament {
+    /**
+     Returns the accumulated reward for the given participation.
+     - parameters:
+       - participation: The participation for which to compute the accumulated reward.
+     - returns: The accumulated reward.
+     
+     */
     func accumulatedReward(for participation: MatchResult.MatchParticipation) -> MatchDay.Match.Result.Reward
+    
+    /**
+     Returns the current ranking of the tournament, sorted by rank.
+     
+     Participations are ranked based on their accumulated reward. The highest reward has the highest rank. If multiple participations have an equal accumulated reward, they share a rank.
+     */
     func ranking() -> [RoundRobinTournamentRanking<MatchResult>]
     
-    mutating func addDecider(with participantions: [MatchResult.MatchParticipation])
+    /**
+     Adds a new decider match to the current tournament with the given participations.
+     
+     You should never call this method directly. Instead, this method is called by the `TournamentManager` to adjust the existence of a decider in the tournament based on its current ranking.
+     
+     - parameters:
+       - participations: The participations to participate in the new decider.
+     */
+    mutating func addDecider(with participations: [MatchResult.MatchParticipation])
+    
+    /**
+     Removes the given decider from the tournament.
+     
+     You should never call this method directly. Instead, this method is called by the `TournamentManager` to adjust the existence of a decider in the tournament based on its current ranking.
+     
+     - parameters:
+       - decider: The match to remove from the tournament.
+     */
     mutating func removeDecider(_ decider: MatchDay.Match)
 }
 
@@ -43,6 +78,13 @@ public extension RoundRobinTournament {
         return ranks(for: participationsAndRewards)
     }
     
+    /**
+     Sorts the given participations by their gained rewards and maps them to their rankings.
+     - parameters:
+       - participationsAndRewards: The participations together with their gained rewards for the tournament. These need not to be all participations of the tournament.
+       - rankOffset: The rank offset to apply to the final ranking. This can be used if there is custom logic for a part of the ranking and the trailing part is ranked using this method.
+     - returns: Returns rankings for the given participations. The result is sorted by rank.
+     */
     func ranks(for participationsAndRewards: [(participation: MatchResult.MatchParticipation, reward: MatchResult.Reward)], rankOffset: Int = 0) -> [RoundRobinTournamentRanking<MatchResult>] {
         let sortedRanking = participationsAndRewards.enumerated().sorted { (lhs, rhs) in
             if lhs.element.reward != rhs.element.reward {

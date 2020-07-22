@@ -1,5 +1,5 @@
 //
-//  MatchTypeScoringOptions.swift
+//  MatchTypeScoringConfiguration.swift
 //  TournamentKit
 //
 //  Created by Jan Wittler on 20.07.20.
@@ -22,7 +22,7 @@ public protocol LocalizedDescriptionMatchTypeReward: MatchTypeReward {
     var localizedDescription: String { get }
 }
 
-public struct MatchTypeScoringOptions<Reward: MatchTypeReward> {
+public struct MatchTypeScoringConfiguration<Reward: MatchTypeReward> {
     public let winningMethod: WinningMethod
     private let rankedRewards: [Reward]
     public let overtimeConfiguration: OvertimeCofiguration?
@@ -169,7 +169,7 @@ public struct MatchTypeScoringOptions<Reward: MatchTypeReward> {
 
 //MARK: - Localized explanation
 
-extension MatchTypeScoringOptions where Reward: LocalizedDescriptionMatchTypeReward {
+extension MatchTypeScoringConfiguration where Reward: LocalizedDescriptionMatchTypeReward {
     public func localizedScoreExplanation(forPlayersCount playersCount: Int) -> String {
         var explanation: String
         switch winningMethod {

@@ -17,7 +17,7 @@ func XCTAssertScores(_ match: Match, scores: [Int], _ message: @autoclosure () -
 
 func XCTAssertResults(_ match: Match, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
     match.results.forEach {
-        let reward = match.overtimeResult == .noOvertime ? match.matchType.scoringOptions.rewards(for: $0.rank!) : match.matchType.scoringOptions.overtimeConfiguration!.rewards(for: $0.rank!)
+        let reward = match.overtimeResult == .noOvertime ? match.matchType.scoringConfiguration.rewards(for: $0.rank!) : match.matchType.scoringConfiguration.overtimeConfiguration!.rewards(for: $0.rank!)
         XCTAssertEqual($0.reward, reward, message(), file: file, line: line)
     }
 }

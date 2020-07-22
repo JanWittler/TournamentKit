@@ -24,7 +24,7 @@ enum MatchType: TournamentKit.MatchType {
     
     typealias Reward = MatchResult.Reward
     
-    var scoringOptions: MatchTypeScoringOptions<MatchResult.Reward> {
+    var scoringConfiguration: MatchTypeScoringConfiguration<MatchResult.Reward> {
         switch self {
         case .highestScore: return .init(winningMethod: .highestScore, rankedRewards: [3])
         case .lowestScore: return .init(winningMethod: .lowestScore, rankedRewards: [3])

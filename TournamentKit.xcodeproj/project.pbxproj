@@ -15,7 +15,7 @@
 		2A15B5DD24C641C9007980A8 /* MatchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B5DC24C641C9007980A8 /* MatchType.swift */; };
 		2A15B5DF24C6434B007980A8 /* MatchDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B5DE24C6434B007980A8 /* MatchDay.swift */; };
 		2A15B5E124C64376007980A8 /* RoundRobinTournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A15B5E024C64376007980A8 /* RoundRobinTournament.swift */; };
-		2A763B7224C5A7D80007DA57 /* MatchTypeScoringOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A763B7124C5A7D80007DA57 /* MatchTypeScoringOptions.swift */; };
+		2A763B7224C5A7D80007DA57 /* MatchTypeScoringConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A763B7124C5A7D80007DA57 /* MatchTypeScoringConfiguration.swift */; };
 		2A763B7824C5A8B50007DA57 /* ScoringOptions.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A763B7A24C5A8B50007DA57 /* ScoringOptions.strings */; };
 		2A763B7B24C5A8B70007DA57 /* ScoringOptions.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 2A763B7D24C5A8B70007DA57 /* ScoringOptions.stringsdict */; };
 		2A763B8224C5AC2C0007DA57 /* TournamentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A763B8124C5AC2C0007DA57 /* TournamentManager.swift */; };
@@ -53,7 +53,7 @@
 		2A15B5DC24C641C9007980A8 /* MatchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchType.swift; sourceTree = "<group>"; };
 		2A15B5DE24C6434B007980A8 /* MatchDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDay.swift; sourceTree = "<group>"; };
 		2A15B5E024C64376007980A8 /* RoundRobinTournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRobinTournament.swift; sourceTree = "<group>"; };
-		2A763B7124C5A7D80007DA57 /* MatchTypeScoringOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTypeScoringOptions.swift; sourceTree = "<group>"; };
+		2A763B7124C5A7D80007DA57 /* MatchTypeScoringConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTypeScoringConfiguration.swift; sourceTree = "<group>"; };
 		2A763B7924C5A8B50007DA57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ScoringOptions.strings; sourceTree = "<group>"; };
 		2A763B7C24C5A8B70007DA57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/ScoringOptions.stringsdict; sourceTree = "<group>"; };
 		2A763B7E24C5A8C40007DA57 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ScoringOptions.strings; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				2A763B8124C5AC2C0007DA57 /* TournamentManager.swift */,
-				2A763B7124C5A7D80007DA57 /* MatchTypeScoringOptions.swift */,
+				2A763B7124C5A7D80007DA57 /* MatchTypeScoringConfiguration.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -304,7 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A763B7224C5A7D80007DA57 /* MatchTypeScoringOptions.swift in Sources */,
+				2A763B7224C5A7D80007DA57 /* MatchTypeScoringConfiguration.swift in Sources */,
 				2A792EF524C1CB1C0050D0CA /* RoundRobinTournament.swift in Sources */,
 				2A792EF324C1BBE70050D0CA /* Tournament.swift in Sources */,
 				2A792EE924C1B8170050D0CA /* Team.swift in Sources */,
