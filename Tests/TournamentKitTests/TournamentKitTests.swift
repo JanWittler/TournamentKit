@@ -31,7 +31,7 @@ class TournamentKitTests: XCTestCase {
         let manager = TournamentManager()
         var match1_1 = tournament.matchDays[0].matches[0]
         let scores1_1 = [0, 1]
-        try manager.applyScores(scores1_1, for: &match1_1, overtimeSuffix: nil)
+        try manager.applyTestScores(scores1_1, for: &match1_1, overtimeSuffix: nil)
         XCTAssert(match1_1.overtimeResult == .noOvertime)
         XCTAssertScores(match1_1, scores: scores1_1)
         XCTAssert(match1_1.results[0].rank == 1)
@@ -40,7 +40,7 @@ class TournamentKitTests: XCTestCase {
         
         var match1_2 = tournament.matchDays[0].matches[1]
         let scores1_2 = [0, 1]
-        try manager.applyScores(scores1_2, for: &match1_2, overtimeSuffix: "OT")
+        try manager.applyTestScores(scores1_2, for: &match1_2, overtimeSuffix: "OT")
         XCTAssert(match1_2.overtimeResult == .overtime(suffix: "OT"))
         XCTAssertScores(match1_2, scores: scores1_2)
         XCTAssert(match1_2.results[0].rank == 1)
@@ -49,7 +49,7 @@ class TournamentKitTests: XCTestCase {
         
         var match2_1 = tournament.matchDays[1].matches[0]
         let scores2_1_1 = [1, 2]
-        try manager.applyScores(scores2_1_1, for: &match2_1, overtimeSuffix: nil)
+        try manager.applyTestScores(scores2_1_1, for: &match2_1, overtimeSuffix: nil)
         XCTAssert(match2_1.overtimeResult == .overtime(suffix: nil))
         XCTAssertScores(match2_1, scores: scores2_1_1)
         XCTAssert(match2_1.results[0].rank == 1)
@@ -57,7 +57,7 @@ class TournamentKitTests: XCTestCase {
         XCTAssertResults(match2_1)
         
         let scores2_1_2 = [0, 2]
-        try manager.applyScores(scores2_1_2, for: &match2_1, overtimeSuffix: nil)
+        try manager.applyTestScores(scores2_1_2, for: &match2_1, overtimeSuffix: nil)
         XCTAssert(match2_1.overtimeResult == .noOvertime)
         XCTAssertScores(match2_1, scores: scores2_1_2)
         XCTAssert(match2_1.results[0].rank == 1)

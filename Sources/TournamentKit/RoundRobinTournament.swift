@@ -13,7 +13,7 @@ public struct RoundRobinTournamentRanking<MatchResult: TournamentKit.MatchResult
     /// The participation of the ranking.
     public let participation: MatchResult.MatchParticipation
     /// The rank of the ranking. Best rank is 0.
-    public let rank: Int
+    public let rank: MatchResult.Rank
     /// The reward of the participation gained in the tourmament.
     public let reward: MatchResult.Reward
     
@@ -71,7 +71,7 @@ public extension RoundRobinTournament {
             let sortedDeciderParticipations = (splitParticipations[true] ?? []).map { (participation, reward) in
                 RoundRobinTournamentRanking<MatchResult>(participation: participation, rank: decider.results.first { $0.participation == participation }!.rank!, reward: reward)
             }.sorted()
-            let sortedOtherParticipations = ranks(for: splitParticipations[false] ?? [], rankOffset: sortedDeciderParticipations.count)
+            let sortedOtherParticipations = ranks(for: splitParticipations[false] ?? [], rankOffset: UInt(sortedDeciderParticipations.count))
             return sortedDeciderParticipations + sortedOtherParticipations
         }
         
@@ -85,7 +85,7 @@ public extension RoundRobinTournament {
        - rankOffset: The rank offset to apply to the final ranking. This can be used if there is custom logic for a part of the ranking and the trailing part is ranked using this method.
      - returns: Returns rankings for the given participations. The result is sorted by rank.
      */
-    func ranks(for participationsAndRewards: [(participation: MatchResult.MatchParticipation, reward: MatchResult.Reward)], rankOffset: Int = 0) -> [RoundRobinTournamentRanking<MatchResult>] {
+    func ranks(for participationsAndRewards: [(participation: MatchResult.MatchParticipation, reward: MatchResult.Reward)], rankOffset: UInt = 0) -> [RoundRobinTournamentRanking<MatchResult>] {
         let sortedRanking = participationsAndRewards.enumerated().sorted { (lhs, rhs) in
             if lhs.element.reward != rhs.element.reward {
                 return lhs.element.reward > rhs.element.reward
@@ -97,7 +97,7 @@ public extension RoundRobinTournament {
             while rank > 0 && sortedRanking[rank - 1].reward == element.reward {
                 rank -= 1
             }
-            return RoundRobinTournamentRanking(participation: element.participation, rank: rank + rankOffset, reward: element.reward)
+            return RoundRobinTournamentRanking(participation: element.participation, rank: MatchResult.Rank(UInt(rank) + rankOffset), reward: element.reward)
         }
     }
 }

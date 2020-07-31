@@ -86,7 +86,7 @@ public struct MatchTypeScoringConfiguration<Reward: MatchTypeReward> {
        - overtimeSuffix: The overtime suffix selected for the match, if any.
      - returns: If the result is invalid, returns `nil`. Otherwise returns the result keys sorted by rank and associated with the reward corresponding to the rank and a boolean indicating whether the results were evaluated as overtime.
      */
-    public func sortedRewardsForResultIfValid<T>(_ result: [T : Int], overtimeSuffix: String?) -> (sortedRewards: [(element: T, score: Int, reward: Reward)], isOvertime: Bool)? {
+    public func sortedRewardsForResultIfValid<T, S: BinaryInteger>(_ result: [T : S], overtimeSuffix: String?) -> (sortedRewards: [(element: T, score: S, reward: Reward)], isOvertime: Bool)? {
         let sortedResult = self.sortedResult(from: result)
         let sortedScores = sortedResult.map { $0.score }
         let isOvertime = self.isOvertime(sortedScores, overtimeSuffix: overtimeSuffix)
@@ -108,12 +108,12 @@ public struct MatchTypeScoringConfiguration<Reward: MatchTypeReward> {
         return (sortedResult.enumerated().map { ($0.element.object, $0.element.score, rankedRewards[optional: $0.offset] ?? .zero) }, isOvertime)
     }
     
-    private func sortedResult<T>(from result: [T: Int]) -> [(object: T, score: Int)] {
+    private func sortedResult<T, S: BinaryInteger>(from result: [T: S]) -> [(object: T, score: S)] {
         let sortedResult = Array(result.map { (object: $0.key, score: $0.value) }.sorted { $0.score > $1.score })
         return winningMethod.sortScoresDescending ? sortedResult : sortedResult.reversed()
     }
     
-    private func validateScoresDifferent(_ sortedScores: [Int], rankedRewards: [Reward]) -> Bool {
+    private func validateScoresDifferent<S: Equatable>(_ sortedScores: [S], rankedRewards: [Reward]) -> Bool {
         var index = 1
         let rewardAt: (Int) -> Reward = { return rankedRewards[optional: $0] ?? .zero }
         repeat {
@@ -131,21 +131,22 @@ public struct MatchTypeScoringConfiguration<Reward: MatchTypeReward> {
         return true
     }
     
-    private func validateWinningMethod(for sortedScores: [Int]) -> Bool {
+    private func validateWinningMethod<S: BinaryInteger>(for sortedScores: [S]) -> Bool {
         switch winningMethod {
         case .highestScore, .lowestScore:
             return true
         case .fixedScore(score: let score):
             return sortedScores[0] == score
         case .flexibleScoreWithDifference(minimalScore: let score, difference: let difference):
+            let scoreDifference = abs(Int(sortedScores[0]) - Int(sortedScores[1]))
             if sortedScores[0] > score {
-                return abs(sortedScores[0] - sortedScores[1]) == difference
+                return scoreDifference == difference
             }
-            return abs(sortedScores[0] - sortedScores[1]) >= difference
+            return scoreDifference >= difference
         }
     }
     
-    private func isOvertime(_ sortedScores: [Int], overtimeSuffix: String?) -> Bool {
+    private func isOvertime<S: BinaryInteger>(_ sortedScores: [S], overtimeSuffix: String?) -> Bool {
         guard let overtimeConfiguration = overtimeConfiguration else {
             return false
         }
@@ -155,7 +156,7 @@ public struct MatchTypeScoringConfiguration<Reward: MatchTypeReward> {
         }
     }
     
-    private func validateOvertime(for sortedScores: [Int], overtimeSuffix: String?) -> Bool {
+    private func validateOvertime<S>(for sortedScores: [S], overtimeSuffix: String?) -> Bool {
         guard let overtimeConfiguration = overtimeConfiguration else {
             return false
         }

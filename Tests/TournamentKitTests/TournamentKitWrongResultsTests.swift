@@ -14,11 +14,11 @@ class TournamentKitWrongResultsTests: XCTestCase {
     
     func testWrongResultsHighestScore() {
         var match = Match(matchType: .highestScore, players: ["A", "B"])
-        XCTAssertThrowsError(try tournamentManager.applyScores([3, 3], for: &match, overtimeSuffix: nil)) { (error) in
+        XCTAssertThrowsError(try tournamentManager.applyTestScores([3, 3], for: &match, overtimeSuffix: nil)) { (error) in
             XCTAssert((error as? TournamentManager.ResultError) == .invalidScores)
         }
         
-        XCTAssertThrowsError(try tournamentManager.applyScores([3, 0], for: &match, overtimeSuffix: "A")) { (error) in
+        XCTAssertThrowsError(try tournamentManager.applyTestScores([3, 0], for: &match, overtimeSuffix: "A")) { (error) in
             XCTAssert((error as? TournamentManager.ResultError) == .invalidScores)
         }
         
@@ -29,11 +29,11 @@ class TournamentKitWrongResultsTests: XCTestCase {
     
     func testWrongResultsLowestScore() {
         var match = Match(matchType: .lowestScore, players: ["A", "B"])
-        XCTAssertThrowsError(try tournamentManager.applyScores([3, 3], for: &match, overtimeSuffix: nil)) { (error) in
+        XCTAssertThrowsError(try tournamentManager.applyTestScores([3, 3], for: &match, overtimeSuffix: nil)) { (error) in
             XCTAssert((error as? TournamentManager.ResultError) == .invalidScores)
         }
         
-        XCTAssertThrowsError(try tournamentManager.applyScores([3, 0], for: &match, overtimeSuffix: "A")) { (error) in
+        XCTAssertThrowsError(try tournamentManager.applyTestScores([3, 0], for: &match, overtimeSuffix: "A")) { (error) in
             XCTAssert((error as? TournamentManager.ResultError) == .invalidScores)
         }
         
@@ -44,15 +44,15 @@ class TournamentKitWrongResultsTests: XCTestCase {
     
     func testWrongResultsFixedScore() {
         var match = Match(matchType: .fixedScore5, players: ["A", "B"])
-        XCTAssertThrowsError(try tournamentManager.applyScores([4, 0], for: &match, overtimeSuffix: nil)) { (error) in
+        XCTAssertThrowsError(try tournamentManager.applyTestScores([4, 0], for: &match, overtimeSuffix: nil)) { (error) in
             XCTAssert((error as? TournamentManager.ResultError) == .invalidScores)
         }
         
-        XCTAssertThrowsError(try tournamentManager.applyScores([5, 5], for: &match, overtimeSuffix: "A")) { (error) in
+        XCTAssertThrowsError(try tournamentManager.applyTestScores([5, 5], for: &match, overtimeSuffix: "A")) { (error) in
             XCTAssert((error as? TournamentManager.ResultError) == .invalidScores)
         }
         
-        XCTAssertThrowsError(try tournamentManager.applyScores([7, 5], for: &match, overtimeSuffix: "A")) { (error) in
+        XCTAssertThrowsError(try tournamentManager.applyTestScores([7, 5], for: &match, overtimeSuffix: "A")) { (error) in
             XCTAssert((error as? TournamentManager.ResultError) == .invalidScores)
         }
         
@@ -63,19 +63,19 @@ class TournamentKitWrongResultsTests: XCTestCase {
     
     func testWrongResultsFlexibleScore() {
         var match = Match(matchType: .flexibleScore5Difference2, players: ["A", "B"])
-        XCTAssertThrowsError(try tournamentManager.applyScores([5, 4], for: &match, overtimeSuffix: nil)) { (error) in
+        XCTAssertThrowsError(try tournamentManager.applyTestScores([5, 4], for: &match, overtimeSuffix: nil)) { (error) in
             XCTAssert((error as? TournamentManager.ResultError) == .invalidScores)
         }
         
-        XCTAssertThrowsError(try tournamentManager.applyScores([5, 5], for: &match, overtimeSuffix: "A")) { (error) in
+        XCTAssertThrowsError(try tournamentManager.applyTestScores([5, 5], for: &match, overtimeSuffix: "A")) { (error) in
             XCTAssert((error as? TournamentManager.ResultError) == .invalidScores)
         }
         
-        XCTAssertThrowsError(try tournamentManager.applyScores([7, 4], for: &match, overtimeSuffix: "A")) { (error) in
+        XCTAssertThrowsError(try tournamentManager.applyTestScores([7, 4], for: &match, overtimeSuffix: "A")) { (error) in
             XCTAssert((error as? TournamentManager.ResultError) == .invalidScores)
         }
         
-        XCTAssertThrowsError(try tournamentManager.applyScores([7, 6], for: &match, overtimeSuffix: "A")) { (error) in
+        XCTAssertThrowsError(try tournamentManager.applyTestScores([7, 6], for: &match, overtimeSuffix: "A")) { (error) in
             XCTAssert((error as? TournamentManager.ResultError) == .invalidScores)
         }
         
