@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import TournamentKit
+@testable import TournamentKit
 
 class TournamentKitWrongResultsTests: XCTestCase {
     let tournamentManager = TournamentManager()
@@ -83,4 +83,13 @@ class TournamentKitWrongResultsTests: XCTestCase {
             XCTAssert((error as? TournamentManager.ResultError) == .invalidResultsProvided)
         }
     }
+}
+
+extension TournamentKitWrongResultsTests {
+    static var allTests = [
+        ("testWrongResultsHighestScore", testWrongResultsHighestScore),
+        ("testWrongResultsLowestScore", testWrongResultsLowestScore),
+        ("testWrongResultsFixedScore", testWrongResultsFixedScore),
+        ("testWrongResultsFlexibleScore", testWrongResultsFlexibleScore)
+    ]
 }

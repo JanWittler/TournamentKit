@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import TournamentKit
+@testable import TournamentKit
 
 func XCTAssertScores(_ match: Match, scores: [Int], _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
     zip(match.results, scores).forEach { (result, score) in

@@ -12,9 +12,8 @@ import Foundation
  An abstract object to represent a participation in a match.
  
  For the most common cases there are already the `Team` and `Player` protocols that define more concrete instances of a match participation.
- 
  */
-public protocol MatchParticipation: Comparable {
+public protocol MatchParticipation: Equatable {
     /// The associated `Player` type.
     associatedtype Player: TournamentKit.Player
     

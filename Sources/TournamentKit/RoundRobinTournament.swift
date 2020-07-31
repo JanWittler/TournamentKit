@@ -63,7 +63,7 @@ public protocol RoundRobinTournament: Tournament {
 
 public extension RoundRobinTournament {
     func ranking() -> [RoundRobinTournamentRanking<MatchResult>] {
-        let allParticipations = participations().sorted()
+        let allParticipations = participations().sorted { $0.name < $1.name }
         let participationsAndRewards = allParticipations.map { ($0, accumulatedReward(for: $0)) }
         
         if let decider = matchDays.map({ $0.matches }).joined().first(where: { $0.matchType.isDecider() }), decider.isFinished {

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import TournamentKit
+@testable import TournamentKit
 
 class TournamentKitTests: XCTestCase {
     private var tournament: RoundRobinTournament!
@@ -74,4 +74,10 @@ class TournamentKitTests: XCTestCase {
         XCTAssert(ranking.map { $0.rank } == [0, 1, 2, 3])
         XCTAssert(ranking.map { $0.reward } == [4, 3, 2, .zero])
     }
+}
+
+extension TournamentKitTests {
+    static var allTests = [
+        ("testExample", testExample)
+    ]
 }
