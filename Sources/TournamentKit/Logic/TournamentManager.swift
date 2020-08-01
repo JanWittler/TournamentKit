@@ -73,11 +73,17 @@ public struct TournamentManager {
        - tournament: The tournament for which to adjust the decider existence.
      */
     public func adjustDeciderExistence<Tournament: TournamentKit.RoundRobinTournament>(in tournament: inout Tournament) {
-        let ranking = tournament.ranking()
-        guard let bestRank = ranking.map({ $0.rank }).min() else {
-            return
+        let bestRankParticipations: [Tournament.MatchResult.MatchParticipation]
+        if tournament.matches().filter({ !$0.matchType.isDecider() }).allSatisfy({ $0.isFinished }) {
+            let ranking = tournament.ranking()
+            guard let bestRank = ranking.map({ $0.rank }).min() else {
+                return
+            }
+            bestRankParticipations = ranking.filter { $0.rank == bestRank }.map { $0.participation }
         }
-        let bestRankParticipations = ranking.filter { $0.rank == bestRank }.map { $0.participation }
+        else {
+            bestRankParticipations = []
+        }
         let deciders = tournament.matches().filter { $0.matchType.isDecider() }.filter { !$0.isFinished }
         if bestRankParticipations.count > 1 {
             let splitDeciders = Dictionary(grouping: deciders) { decider in
