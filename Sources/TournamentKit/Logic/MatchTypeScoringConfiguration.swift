@@ -142,7 +142,7 @@ public struct MatchTypeScoringConfiguration<Reward: MatchTypeReward> {
             if sortedScores[0] > score {
                 return scoreDifference == difference
             }
-            return scoreDifference >= difference
+            return scoreDifference >= difference && sortedScores[0] == score
         }
     }
     
