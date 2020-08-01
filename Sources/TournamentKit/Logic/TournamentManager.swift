@@ -28,8 +28,11 @@ public struct TournamentManager {
       - overtimeSuffix: A suffix indicating some overtime if any.
     - throws: Throws an error of `ResultError` if the provided input is invalid.
     */
-    public func validateScores<Match: TournamentKit.Match>(_ scores: [(result: Match.Result, score: Match.Result.Score)], for match: Match, overtimeSuffix: String?) throws {
-        try _validateScores(scores, for: match, overtimeSuffix: overtimeSuffix)
+    public func validateScores<Match: TournamentKit.Match>(_ scores: [(result: Match.Result, score: Match.Result.Score?)], for match: Match, overtimeSuffix: String?) throws {
+        guard scores.allSatisfy({ $0.score != nil }) else {
+            throw ResultError.invalidScores
+        }
+        try validateScores(scores.map { ($0.0, $0.1!) }, for: match, overtimeSuffix: overtimeSuffix)
     }
     
     /**
@@ -44,7 +47,7 @@ public struct TournamentManager {
      - postcondition: `match.overtimeResult` is updated and not `nil`.
      */
     public func applyScores<Match: TournamentKit.Match>(_ scores: [(result: Match.Result, score: Match.Result.Score)], for match: inout Match, overtimeSuffix: String?) throws {
-        let (sortedRewards, isOvertime) = try _validateScores(scores, for: match, overtimeSuffix: overtimeSuffix)
+        let (sortedRewards, isOvertime) = try validateScores(scores, for: match, overtimeSuffix: overtimeSuffix)
         sortedRewards.enumerated().map { (index, obj) -> (index: Int, score: Match.Result.Score, reward: Match.Result.Reward, rank: Int) in
             var rank = index
             while rank > 0 && sortedRewards[rank - 1].score == obj.score {
@@ -100,7 +103,7 @@ public struct TournamentManager {
      - returns: Returns an array of tuples consisting of the index of the result element in the `match.results` array, its score and its reward; and a boolean indicating whether the scores resulted in the match being evaluated as in overtime.
     */
     @discardableResult
-    private func _validateScores<Match: TournamentKit.Match>(_ scores: [(result: Match.Result, score: Match.Result.Score)], for match: Match, overtimeSuffix: String?) throws -> (sortedRewards: [(element: Int, score: Match.Result.Score, reward: Match.Result.Reward)], isOvertime: Bool)
+    private func validateScores<Match: TournamentKit.Match>(_ scores: [(result: Match.Result, score: Match.Result.Score)], for match: Match, overtimeSuffix: String?) throws -> (sortedRewards: [(element: Int, score: Match.Result.Score, reward: Match.Result.Reward)], isOvertime: Bool)
     {
         guard scores.count == match.results.count else {
             throw ResultError.invalidResultsProvided
