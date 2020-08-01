@@ -21,6 +21,18 @@ public struct TournamentManager {
     public init() { }
     
     /**
+    Validates the given scores for the given match. If the scores are invalid - determined based on the type of the match - an error of type `ResultError` is thrown.
+    - parameters:
+      - scores: The scores for the match. The results in this array must match with the results of the given match, the order does not matter.
+      - match: The match to validate the scores for.
+      - overtimeSuffix: A suffix indicating some overtime if any.
+    - throws: Throws an error of `ResultError` if the provided input is invalid.
+    */
+    public func validateScores<Match: TournamentKit.Match>(_ scores: [(result: Match.Result, score: Match.Result.Score)], for match: Match, overtimeSuffix: String?) throws {
+        try _validateScores(scores, for: match, overtimeSuffix: overtimeSuffix)
+    }
+    
+    /**
      Applies the given scores to the given match. If the scores are invalid - determined based on the type of the match - an error of type `ResultError` is thrown.
      - parameters:
        - scores: The scores for the match. The results in this array must match with the results of the given match, the order does not matter.
@@ -32,18 +44,7 @@ public struct TournamentManager {
      - postcondition: `match.overtimeResult` is updated and not `nil`.
      */
     public func applyScores<Match: TournamentKit.Match>(_ scores: [(result: Match.Result, score: Match.Result.Score)], for match: inout Match, overtimeSuffix: String?) throws {
-        guard scores.count == match.results.count else {
-            throw ResultError.invalidResultsProvided
-        }
-        let result = match.results.enumerated().reduce(into: [Int : Match.Result.Score]()) { (result, obj) in
-            result[obj.offset] = scores.first { $0.result == obj.element }?.score
-        }
-        guard result.count == match.results.count else {
-            throw ResultError.invalidResultsProvided
-        }
-        guard let (sortedRewards, isOvertime) = match.matchType.scoringConfiguration.sortedRewardsForResultIfValid(result, overtimeSuffix: overtimeSuffix) else {
-            throw ResultError.invalidScores
-        }
+        let (sortedRewards, isOvertime) = try _validateScores(scores, for: match, overtimeSuffix: overtimeSuffix)
         sortedRewards.enumerated().map { (index, obj) -> (index: Int, score: Match.Result.Score, reward: Match.Result.Reward, rank: Int) in
             var rank = index
             while rank > 0 && sortedRewards[rank - 1].score == obj.score {
@@ -87,5 +88,32 @@ public struct TournamentManager {
         else {
             deciders.forEach { tournament.removeDecider($0) }
         }
+    }
+    
+    /**
+    Validates the given scores for the given match. If the scores are invalid - determined based on the type of the match - an error of type `ResultError` is thrown.
+     - parameters:
+       - scores: The scores for the match. The results in this array must match with the results of the given match, the order does not matter.
+       - match: The match to validate the scores for.
+       - overtimeSuffix: A suffix indicating some overtime if any.
+     - throws: Throws an error of `ResultError` if the provided input is invalid.
+     - returns: Returns an array of tuples consisting of the index of the result element in the `match.results` array, its score and its reward; and a boolean indicating whether the scores resulted in the match being evaluated as in overtime.
+    */
+    @discardableResult
+    private func _validateScores<Match: TournamentKit.Match>(_ scores: [(result: Match.Result, score: Match.Result.Score)], for match: Match, overtimeSuffix: String?) throws -> (sortedRewards: [(element: Int, score: Match.Result.Score, reward: Match.Result.Reward)], isOvertime: Bool)
+    {
+        guard scores.count == match.results.count else {
+            throw ResultError.invalidResultsProvided
+        }
+        let result = match.results.enumerated().reduce(into: [Int : Match.Result.Score]()) { (result, obj) in
+            result[obj.offset] = scores.first { $0.result == obj.element }?.score
+        }
+        guard result.count == match.results.count else {
+            throw ResultError.invalidResultsProvided
+        }
+        guard let (sortedRewards, isOvertime) = match.matchType.scoringConfiguration.sortedRewardsForResultIfValid(result, overtimeSuffix: overtimeSuffix) else {
+            throw ResultError.invalidScores
+        }
+        return (sortedRewards, isOvertime)
     }
 }
