@@ -23,6 +23,10 @@ func XCTAssertResults(_ match: Match, _ message: @autoclosure () -> String = "",
 }
 
 extension TournamentKit.TournamentManager {
+    func validateTestScores(_ scores: [Int?], for match: Match, overtimeSuffix: String?) throws {
+        try validateScores(Array(zip(match.results, scores)), for: match, overtimeSuffix: overtimeSuffix)
+    }
+    
     func applyTestScores(_ scores: [Int], for match: inout Match, overtimeSuffix: String?) throws {
         try applyScores(Array(zip(match.results, scores)), for: &match, overtimeSuffix: overtimeSuffix)
     }
