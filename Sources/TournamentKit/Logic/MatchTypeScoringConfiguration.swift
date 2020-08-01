@@ -27,8 +27,8 @@ public struct MatchTypeScoringConfiguration<Reward: MatchTypeReward> {
     private let rankedRewards: [Reward]
     public let overtimeConfiguration: OvertimeCofiguration?
     
-    public func rewards(for rank: Int) -> Reward {
-        return rankedRewards[optional: rank] ?? .zero
+    public func rewards(for rank: UInt) -> Reward {
+        return rankedRewards[optional: Int(rank)] ?? .zero
     }
     
     public enum WinningMethod {
@@ -51,8 +51,8 @@ public struct MatchTypeScoringConfiguration<Reward: MatchTypeReward> {
         fileprivate let rankedRewards: [Reward]
         public let trigger: OvertimeTrigger
         
-        public func rewards(for rank: Int) -> Reward {
-            return rankedRewards[optional: rank] ?? .zero
+        public func rewards(for rank: UInt) -> Reward {
+            return rankedRewards[optional: Int(rank)] ?? .zero
         }
         public enum OvertimeTrigger {
             case bySuffix(possibleSuffixes: [String])
@@ -171,7 +171,7 @@ public struct MatchTypeScoringConfiguration<Reward: MatchTypeReward> {
 //MARK: - Localized explanation
 
 extension MatchTypeScoringConfiguration where Reward: LocalizedDescriptionMatchTypeReward {
-    public func localizedScoreExplanation(forPlayersCount playersCount: Int) -> String {
+    public func localizedScoreExplanation(forPlayersCount playersCount: UInt) -> String {
         var explanation: String
         switch winningMethod {
         case .highestScore:

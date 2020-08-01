@@ -13,8 +13,8 @@ public struct RoundRobinTournamentRanking<MatchResult: TournamentKit.MatchResult
     /// The participation of the ranking.
     public let participation: MatchResult.MatchParticipation
     /// The rank of the ranking. Best rank is 0.
-    public let rank: MatchResult.Rank
-    /// The reward of the participation gained in the tourmament.
+    public let rank: UInt
+    /// The reward of the participation gained in the tournament.
     public let reward: MatchResult.Reward
     
     public static func <(lhs: RoundRobinTournamentRanking, rhs: RoundRobinTournamentRanking) -> Bool {
@@ -97,7 +97,7 @@ public extension RoundRobinTournament {
             while rank > 0 && sortedRanking[rank - 1].reward == element.reward {
                 rank -= 1
             }
-            return RoundRobinTournamentRanking(participation: element.participation, rank: MatchResult.Rank(UInt(rank) + rankOffset), reward: element.reward)
+            return RoundRobinTournamentRanking(participation: element.participation, rank: UInt(rank) + rankOffset, reward: element.reward)
         }
     }
 }

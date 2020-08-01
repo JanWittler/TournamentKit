@@ -20,8 +20,6 @@ public protocol MatchResult: Equatable {
     associatedtype MatchParticipation: TournamentKit.MatchParticipation
     /// The associated `Score` type. This is chosen to be generic to support different integer representations which eases the integration with e.g. CoreData.
     associatedtype Score: BinaryInteger
-    /// The associated `Rank` type. This is chosen to be generic to support different integer representations which eases the integration with e.g. CoreData.
-    associatedtype Rank: BinaryInteger
     
     /// The participation associated with this result.
     var participation: MatchParticipation { get }
@@ -39,7 +37,7 @@ public protocol MatchResult: Equatable {
      
      - important: Do not set this value directly but rather by using `TournamentManager.applyScores(_:for:overtimeSuffix:)`.
      */
-    var rank: Rank? { get set }
+    var rank: UInt? { get set }
     
     /**
      The reward gained for the achieved rank in the match.

@@ -53,7 +53,7 @@ public struct TournamentManager {
         }.forEach {
             match.results[$0.index].score = $0.score
             match.results[$0.index].reward = $0.reward
-            match.results[$0.index].rank = Match.Result.Rank($0.rank)
+            match.results[$0.index].rank = UInt($0.rank)
         }
         match.overtimeResult = isOvertime ? .overtime(suffix: overtimeSuffix) : .noOvertime
     }

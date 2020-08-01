@@ -27,7 +27,7 @@ struct MatchResult: TournamentKit.MatchResult, Equatable {
     let player: Player
     var participation: Player { return player }
     var score: Int? = nil
-    var rank: Int? = nil
+    var rank: UInt? = nil
     var reward: Reward? = nil
     
     init(player: Player) {
