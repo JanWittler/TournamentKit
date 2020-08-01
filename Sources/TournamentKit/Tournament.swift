@@ -28,6 +28,8 @@ public protocol Tournament {
      - important: The returned array must contain all and only those participations contained in the tournament's matches. There must be no duplicates.
      */
     func participations() -> [MatchResult.MatchParticipation]
+    /// The winner of this tournament. If the tournament is not yet finished, `nil` is returned.
+    func winner() -> MatchResult.MatchParticipation?
 }
 
 public extension Tournament {

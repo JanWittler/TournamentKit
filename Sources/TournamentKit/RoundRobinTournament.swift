@@ -78,6 +78,18 @@ public extension RoundRobinTournament {
         return ranks(for: participationsAndRewards)
     }
     
+    func winner() -> MatchDay.Match.Result.MatchParticipation? {
+        guard isFinished else {
+            return nil
+        }
+        let ranking = self.ranking()
+        let winners = ranking.filter({ $0.rank == 0 })
+        guard winners.count == 1 else {
+            return nil
+        }
+        return winners.first!.participation
+    }
+    
     /**
      Sorts the given participations by their gained rewards and maps them to their rankings.
      - parameters:
