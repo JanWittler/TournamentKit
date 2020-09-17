@@ -225,5 +225,5 @@ extension MatchTypeScoringConfiguration where Reward: LocalizedDescriptionMatchT
 }
 
 private func NSLocalizedString(_ key: String, comment: String) -> String {
-    return Foundation.NSLocalizedString(key, tableName: "ScoringOptions", comment: comment)
+    return Foundation.NSLocalizedString(key, tableName: "ScoringOptions", bundle: .module, comment: comment)
 }
