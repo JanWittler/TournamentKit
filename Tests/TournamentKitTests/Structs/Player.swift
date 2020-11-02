@@ -9,10 +9,14 @@
 import Foundation
 import TournamentKit
 
-struct Player: TournamentKit.Player, ExpressibleByStringLiteral {
+struct Player: TournamentKit.Player, ExpressibleByStringLiteral, Equatable, Hashable {
     let name: String
     
     init(stringLiteral value: StringLiteralType) {
         self.name = String(value)
     }
+}
+
+extension Player: CustomStringConvertible {
+    var description: String { return "Player \(name)"}
 }

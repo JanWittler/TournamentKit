@@ -4,7 +4,8 @@ import XCTest
 public func allTests() -> [XCTestCaseEntry] {
     return [
         testCase(TournamentKitTests.allTests),
-        testCase(TournamentKitWrongResultsTests.allTests)
+        testCase(TournamentKitWrongResultsTests.allTests),
+        testCase(MatchDayBasedRoundRobinTournamentCreatorTests.allTests)
     ]
 }
 #endif
