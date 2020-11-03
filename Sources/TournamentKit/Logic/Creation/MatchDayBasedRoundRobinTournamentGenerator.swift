@@ -19,6 +19,9 @@ public struct MatchDayBasedRoundRobinTournamentGenerator<MatchType: TournamentKi
     /// The match type for all matches of the generated tournament descriptions.
     public let matchType: MatchType
     
+    /// If set to `true`, randomizes the order of the provided participations and the match positions within one match day. If set to `false`, the generator will produce always the same output for the same input.
+    public var randomizeOrder = true
+    
     /**
      Initializes the generator with the given match type.
      - parameters:
@@ -33,7 +36,7 @@ public struct MatchDayBasedRoundRobinTournamentGenerator<MatchType: TournamentKi
         let allPairings = generateAllPairings(participations: participations)
         //TODO: normalize home <-> away pairings
         let matches = allPairings.map { day in
-            day.shuffled().map { TournamentCreationDescription<MatchType, Participation>.MatchDescription(matchType: matchType, participations: [$0.0, $0.1]) }
+            (randomizeOrder ? day.shuffled() : day).map { TournamentCreationDescription<MatchType, Participation>.MatchDescription(matchType: matchType, participations: [$0.0, $0.1]) }
         }
         return .init(matches: matches)
     }
@@ -41,6 +44,9 @@ public struct MatchDayBasedRoundRobinTournamentGenerator<MatchType: TournamentKi
     private func generateAllPairings<Participation: MatchParticipation>(participations: [Participation]) -> [[(Participation, Participation)]] {
         //using https://en.wikipedia.org/wiki/Round-robin_tournament#Circle_method
         var participations: [Participation?] = participations
+        if randomizeOrder {
+            participations.shuffle()
+        }
         if participations.count % 2 == 1 {
             participations.insert(nil, at: 0)
         }
