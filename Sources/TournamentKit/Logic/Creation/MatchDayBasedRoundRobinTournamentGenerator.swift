@@ -15,20 +15,20 @@ import Foundation
  
  For one match day each participation is participating in one match. An exeption to this is an odd number of participations, in which case each match day another participation is pausing.
  */
-struct MatchDayBasedRoundRobinTournamentGenerator<MatchType: TournamentKit.MatchType>: TournamentGenerator {
+public struct MatchDayBasedRoundRobinTournamentGenerator<MatchType: TournamentKit.MatchType>: TournamentGenerator {
     /// The match type for all matches of the generated tournament descriptions.
-    let matchType: MatchType
+    public let matchType: MatchType
     
     /**
      Initializes the generator with the given match type.
      - parameters:
        - matchType: The match type for all matches of the generated tournament descriptions.
      */
-    init(matchType: MatchType) {
+    public init(matchType: MatchType) {
         self.matchType = matchType
     }
     
-    func generateTournament<Participation: MatchParticipation>(participations: [Participation]) -> TournamentCreationDescription<MatchType, Participation> {
+    public func generateTournament<Participation: MatchParticipation>(participations: [Participation]) -> TournamentCreationDescription<MatchType, Participation> {
         precondition(participations.count >= 2, "invalid number of participations provided. At least 2 are required.")
         let allPairings = generateAllPairings(participations: participations)
         //TODO: normalize home <-> away pairings

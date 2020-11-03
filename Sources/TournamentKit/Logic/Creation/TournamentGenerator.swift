@@ -8,7 +8,7 @@
 import Foundation
 
 /// A tournament generator generates tournament descriptions using the provided participations.
-protocol TournamentGenerator {
+public protocol TournamentGenerator {
     /**
      The associated `MatchType` type.
      - note: If possible, the implementing class should be generic over this type to support any provided match type.
