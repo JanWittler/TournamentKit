@@ -239,4 +239,3 @@ extension Int64: MatchTypeReward {}
 extension Float: MatchTypeReward {}
 extension Float80: MatchTypeReward {}
 extension Double: MatchTypeReward {}
-extension CGFloat: MatchTypeReward {}
