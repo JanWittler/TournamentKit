@@ -227,3 +227,16 @@ extension MatchTypeScoringConfiguration where Reward: LocalizedDescriptionMatchT
 private func NSLocalizedString(_ key: String, comment: String) -> String {
     return Foundation.NSLocalizedString(key, tableName: "ScoringOptions", bundle: .module, comment: comment)
 }
+
+//MARK: - Conformances
+
+extension Int: MatchTypeReward {}
+extension Int8: MatchTypeReward {}
+extension Int16: MatchTypeReward {}
+extension Int32: MatchTypeReward {}
+extension Int64: MatchTypeReward {}
+
+extension Float: MatchTypeReward {}
+extension Float80: MatchTypeReward {}
+extension Double: MatchTypeReward {}
+extension CGFloat: MatchTypeReward {}
