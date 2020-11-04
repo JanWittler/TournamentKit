@@ -25,7 +25,7 @@ public protocol LocalizedDescriptionMatchTypeReward: MatchTypeReward {
 public struct MatchTypeScoringConfiguration<Reward: MatchTypeReward> {
     public let winningMethod: WinningMethod
     private let rankedRewards: [Reward]
-    public let overtimeConfiguration: OvertimeCofiguration?
+    public let overtimeConfiguration: OvertimeConfiguration?
     
     public func rewards(for rank: UInt) -> Reward {
         return rankedRewards[optional: Int(rank)] ?? .zero
@@ -47,7 +47,7 @@ public struct MatchTypeScoringConfiguration<Reward: MatchTypeReward> {
         }
     }
     
-    public struct OvertimeCofiguration {
+    public struct OvertimeConfiguration {
         fileprivate let rankedRewards: [Reward]
         public let trigger: OvertimeTrigger
         
@@ -68,7 +68,7 @@ public struct MatchTypeScoringConfiguration<Reward: MatchTypeReward> {
         }
     }
     
-    public init(winningMethod: WinningMethod, rankedRewards: [Reward], overtimeConfiguration: OvertimeCofiguration? = nil) {
+    public init(winningMethod: WinningMethod, rankedRewards: [Reward], overtimeConfiguration: OvertimeConfiguration? = nil) {
         if case .flexibleScoreWithDifference(_, difference: let difference) = winningMethod {
             precondition(difference > 1, "the minimal allowed difference is 2")
         }
